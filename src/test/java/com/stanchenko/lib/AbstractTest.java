@@ -62,10 +62,9 @@ public class AbstractTest {
 	 */
 	private static String getChromeDriverPath() {
 		StringBuilder commonPath = new StringBuilder(System.getProperty("user.home"));
-		commonPath.append("/chromedriver");
+		commonPath.append("\\chromedriver");
 
 		String osName = System.getProperty("os.name");
-		System.out.println(osName);
 
 		if (osName != null && osName.toLowerCase().contains("windows")) {
 			commonPath.append(".exe");
