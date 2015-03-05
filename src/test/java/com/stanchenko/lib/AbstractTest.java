@@ -1,11 +1,7 @@
 package com.stanchenko.lib;
 
-import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
-import static com.codeborne.selenide.junit.ScreenShooter.failedTests;
-
-import java.io.File;
-import java.io.IOException;
-
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.junit.ScreenShooter;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -14,8 +10,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 
-import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.junit.ScreenShooter;
+import java.io.File;
+import java.io.IOException;
+
+import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
+import static com.codeborne.selenide.junit.ScreenShooter.failedTests;
 
 /**
  * (c) Swissquote 26.02.15
@@ -58,13 +57,16 @@ public class AbstractTest {
 
 	/**
 	 * Chrome driver should be placed in home directory.
+	 *
 	 * @return path to chromedriver
 	 */
 	private static String getChromeDriverPath() {
 		StringBuilder commonPath = new StringBuilder(System.getProperty("user.home"));
 		commonPath.append("/chromedriver");
 
-		if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+		String osName = System.getProperty("os.name");
+
+		if (osName != null && osName.toLowerCase().contains("windows")) {
 			commonPath.append(".exe");
 		}
 		return commonPath.toString();

@@ -1,13 +1,11 @@
 package com.stanchenko;
 
+import com.stanchenko.lib.AbstractTest;
+import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Stories;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
-
-import org.junit.Test;
-
-import com.stanchenko.lib.AbstractTest;
-
-import ru.yandex.qatools.allure.annotations.Stories;
 
 public class GoogleTest extends AbstractTest {
 
