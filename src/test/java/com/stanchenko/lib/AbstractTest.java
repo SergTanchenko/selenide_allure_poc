@@ -36,10 +36,13 @@ public class AbstractTest {
 
 	@AfterClass
 	public static void closeBrowser() {
-		driver.close();
+		if (driver != null) {
+			driver.close();
+		}
 	}
 
 	private static WebDriver getChromeInstance() {
+		System.out.println(getChromeDriverPath());
 		ChromeDriverService service = new ChromeDriverService.Builder()
 				.usingDriverExecutable(new File(getChromeDriverPath()))
 				.usingAnyFreePort()
@@ -62,6 +65,7 @@ public class AbstractTest {
 		commonPath.append("/chromedriver");
 
 		String osName = System.getProperty("os.name");
+		System.out.println(osName);
 
 		if (osName != null && osName.toLowerCase().contains("windows")) {
 			commonPath.append(".exe");
