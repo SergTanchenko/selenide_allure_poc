@@ -14,17 +14,14 @@ import java.io.File;
 import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
-import static com.codeborne.selenide.junit.ScreenShooter.failedTests;
 
 /**
- * (c) Swissquote 26.02.15
- *
- * @author Sergii Tanchenko (o_stanch)
+ * Created by Sergii Tanchenko on 05.03.2015.
  */
 public class AbstractTest {
 
 	@Rule
-	public ScreenShooter photographer = failedTests().to("target/screenshots");
+	public ScreenShooter makeScreenShotOnFailure = ScreenShooter.failedTests().to("target/selenide");
 
 	private static WebDriver driver;
 
