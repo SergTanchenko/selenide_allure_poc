@@ -45,15 +45,28 @@ public class AbstractTest {
 
 	private static WebDriver getChromeInstance() {
 		ChromeDriverService service = new ChromeDriverService.Builder()
-			.usingDriverExecutable(new File(System.getProperty("user.home") + "/chromedriver"))
-			.usingAnyFreePort()
-			.build();
+				.usingDriverExecutable(new File(getChromeDriverPath()))
+				.usingAnyFreePort()
+				.build();
 		try {
 			service.start();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println("Chrome Service wasn't started! \n" + e.getMessage());
 		}
 		return new ChromeDriver(service);
+	}
+
+	/**
+	 * Chrome driver should be placed in home directory.
+	 * @return path to chromedriver
+	 */
+	private static String getChromeDriverPath() {
+		StringBuilder commonPath = new StringBuilder(System.getProperty("user.home"));
+		commonPath.append("/chromedriver");
+
+		if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+			commonPath.append(".exe");
+		}
+		return commonPath.toString();
 	}
 }
