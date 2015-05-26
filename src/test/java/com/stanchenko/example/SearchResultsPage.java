@@ -1,9 +1,10 @@
-package com.stanchenko;
-
-import com.codeborne.selenide.ElementsCollection;
-import ru.yandex.qatools.allure.annotations.Step;
+package com.stanchenko.example;
 
 import static com.codeborne.selenide.Selenide.$$;
+
+import com.codeborne.selenide.ElementsCollection;
+
+import ru.yandex.qatools.allure.annotations.Step;
 
 public class SearchResultsPage {
 	@Step
