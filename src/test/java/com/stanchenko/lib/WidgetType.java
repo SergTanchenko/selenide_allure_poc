@@ -7,7 +7,7 @@ package com.stanchenko.lib;
  */
 public enum WidgetType {
 
-	SEARCH("Search", ""), PERSONAL_LIST("Personal List", ".quotelist[data-type='QuoteList']");
+	SEARCH("Search", ""), PERSONAL_LIST("Personal List", "");
 
 	private String widgetName;
 	private String selector;

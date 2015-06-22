@@ -1,10 +1,8 @@
 package com.stanchenko.pageobjects;
 
-import static com.codeborne.selenide.Condition.present;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
-
-import com.stanchenko.lib.WidgetType;
 
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -17,7 +15,8 @@ public class Workspace {
 
 	@Step
 	public PersonalListWidget getPersonalListWidget() {
-		$(WidgetType.PERSONAL_LIST.getSelector()).shouldBe(present);
+		$(".quotelist[data-type='QuoteList']").$$("table tr td").filter(text("Abb"));
+
 		return page(PersonalListWidget.class);
 	}
 }
